@@ -1,7 +1,6 @@
-#include "Game.hpp"
+#include "Position.hpp"
 
 int main() {
-  ms_pacman::Game game;
-  game.run();
-  return 0;
+  ms_pacman::Position pos;
+  return int(pos.x);
 }
