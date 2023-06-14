@@ -1,6 +1,6 @@
 # Vcpkg repro steps for https://github.com/microsoft/vcpkg/issues/31962
 
-Seems to be related to the `system-utils library`.
+Seems to be related to the `system-utils` library.
 
 ## Project layout
 
