@@ -48,7 +48,7 @@ jobs:
     # Running configure twice as a workaround for https://github.com/microsoft/vcpkg/issues/31962
     - name: Configure CMake
       working-directory: build
-      run: cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .. || cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+      run: cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 
     - name: Run clang-tidy-13
       working-directory: build
