@@ -2,5 +2,5 @@
 
 int main() {
   ms_pacman::Position pos;
-  return int(pos.x);
+  return int(pos.x) + ms_pacman::someSillyFunctionWithNoRealUse();;
 }

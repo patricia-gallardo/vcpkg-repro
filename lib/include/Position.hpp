@@ -7,6 +7,8 @@
 
 namespace ms_pacman {
 
+int someSillyFunctionWithNoRealUse();
+
 template<typename T>
 concept integral = std::is_integral_v<T>;
 
