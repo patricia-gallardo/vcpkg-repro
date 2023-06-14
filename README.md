@@ -19,10 +19,10 @@ sudo apt-get update && sudo apt-get install -y curl zip unzip tar libx11-dev lib
 rm -rf build
 ~~~
 
-### CMake configure first time
+### CMake configure first time: WILL FAIL
 
 ~~~bash
-cmake --preset linux-gcc-11 -DCMAKE_BUILD_TYPE=Debug # configure WILL FAIL
+cmake --preset linux-gcc-11 -DCMAKE_BUILD_TYPE=Debug
 ~~~
 
 ~~~
@@ -51,8 +51,77 @@ See also "/mnt/c/Users/patricia/Code/vcpkg-repro/build/linux-gcc-11/CMakeFiles/C
 See also "/mnt/c/Users/patricia/Code/vcpkg-repro/build/linux-gcc-11/CMakeFiles/CMakeError.log".
 ~~~
 
-### CMake configure second time
+### CMake configure second time: WILL PASS
 
 ~~~bash
-cmake --preset linux-gcc-11 -DCMAKE_BUILD_TYPE=Debug # configure WILL PASS
+cmake --preset linux-gcc-11 -DCMAKE_BUILD_TYPE=Debug
+~~~
+
+### CMake Build
+
+~~~bash
+cmake --build --preset linux-gcc-build-11 --config Debug
+~~~
+
+### CMake Run tests
+
+~~~bash
+ctest --preset linux-gcc-test-11 -C Debug
+~~~
+
+## MacOS
+
+### Clean up previous build
+
+~~~bash
+rm -rf build
+~~~
+
+### CMake configure first time: WILL FAIL
+
+~~~bash
+cmake --preset osx -DCMAKE_BUILD_TYPE=Debug
+~~~
+
+~~~
+-- Found SFML 2.5.1 in /Users/patricia-gallardo/Code/vcpkg-repro/build/osx/vcpkg_installed/x64-osx/share/sfml
+CMake Error at build/osx/vcpkg_installed/x64-osx/share/sfml/SFMLConfig.cmake:144 (message):
+  SFML found but some of its dependencies are missing ( OpenGL FreeType)
+Call Stack (most recent call first):
+  build/osx/_deps/vcpkg-src/scripts/buildsystems/vcpkg.cmake:852 (_find_package)
+  lib/CMakeLists.txt:1 (find_package)
+
+
+CMake Error at build/osx/_deps/vcpkg-src/scripts/buildsystems/vcpkg.cmake:852 (_find_package):
+  Found package configuration file:
+
+    /Users/patricia-gallardo/Code/vcpkg-repro/build/osx/vcpkg_installed/x64-osx/share/sfml/SFMLConfig.cmake
+
+  but it set SFML_FOUND to FALSE so package "SFML" is considered to be NOT
+  FOUND.
+Call Stack (most recent call first):
+  lib/CMakeLists.txt:1 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/patricia-gallardo/Code/vcpkg-repro/build/osx/CMakeFiles/CMakeOutput.log".
+See also "/Users/patricia-gallardo/Code/vcpkg-repro/build/osx/CMakeFiles/CMakeError.log".
+~~~
+
+### CMake configure second time: WILL PASS
+
+~~~bash
+cmake --preset osx -DCMAKE_BUILD_TYPE=Debug
+~~~
+
+### CMake Build
+
+~~~bash
+cmake --build --preset osx-build --config Debug
+~~~
+
+### CMake Run tests
+
+~~~bash
+ctest --preset osx-test -C Debug
 ~~~
