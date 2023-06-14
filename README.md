@@ -1,5 +1,44 @@
 # Vcpkg repro steps for https://github.com/microsoft/vcpkg/issues/31962
 
+Seems to be related to the `system-utils library`.
+
+## Project layout
+
+~~~
+.
+├── CMakeLists.txt
+├── CMakePresets.json
+├── README.md
+├── cmake
+│   ├── CompilerWarnings.cmake
+│   ├── Sanitizers.cmake
+│   ├── ranges.cmake
+│   ├── toolchain.cmake
+│   └── vcpkg.cmake
+├── lib
+│   ├── CMakeLists.txt
+│   ├── Position.cpp
+│   └── include
+│       └── Position.hpp
+├── src
+│   ├── CMakeLists.txt
+│   └── main.cpp
+├── system-utils
+│   ├── CMakeLists.txt
+│   ├── Scaling.cpp
+│   ├── Scaling.hpp
+│   ├── Scaling.mm
+│   ├── User.hpp
+│   ├── UserPosix.cpp
+│   └── UserWin32.cpp
+├── test
+│   ├── CMakeLists.txt
+│   ├── README.md
+│   └── unit_tests
+│       └── testPosition.cpp
+└── vcpkg.json
+~~~
+
 ## Ubuntu 22.04
 
 ### Get deps
